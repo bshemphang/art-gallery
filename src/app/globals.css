@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+  
+  button, 
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 .bg-grid-pattern {
   background-image: 
     linear-gradient(to right, #f1f5f9 1px, transparent 1px),
@@ -11,4 +28,15 @@
 
 .gradient-background {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+@media (max-width: 640px) {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  table {
+    display: block;
+    overflow-x: auto;
+  }
 }

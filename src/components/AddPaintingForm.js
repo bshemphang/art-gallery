@@ -99,16 +99,18 @@ export default function AddPaintingForm() {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-amber-100 shadow-sm">
-      <div className="p-6 border-b border-amber-50">
-        <h3 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
-          <PhotoIcon className="h-7 w-7 text-amber-500" />
+    <div className="bg-white rounded-xl lg:rounded-2xl border border-amber-100 shadow-sm"> 
+      <div className="p-4 lg:p-6 border-b border-amber-50"> 
+        <h3 className="text-xl lg:text-2xl font-bold text-gray-900 flex items-center gap-3"> 
+          <PhotoIcon className="h-6 w-6 lg:h-7 lg:w-7 text-amber-500" /> 
           Add New Artwork
         </h3>
-        <p className="text-gray-600 mt-2">Share your latest creation with the world</p>
+        <p className="text-gray-600 mt-2 text-sm lg:text-base"> 
+          Share your latest creation with the world
+        </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="p-6 space-y-8">
+      <form onSubmit={handleSubmit} className="p-4 lg:p-6 space-y-6"> 
         {/* Image Upload Preview */}
         <div className="space-y-4">
           <label className="block text-sm font-medium text-gray-700 flex items-center gap-2">
@@ -117,7 +119,7 @@ export default function AddPaintingForm() {
           </label>
           
           {imagePreview ? (
-            <div className="relative aspect-square max-w-md mx-auto">
+            <div className="relative aspect-square max-w-full lg:max-w-md mx-auto"> 
               <img
                 src={imagePreview}
                 alt="Preview"
@@ -130,21 +132,25 @@ export default function AddPaintingForm() {
                   setImagePreview(null);
                   URL.revokeObjectURL(imagePreview);
                 }}
-                className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors"
+                className="absolute top-2 right-2 bg-red-500 text-white p-1.5 lg:p-2 rounded-full hover:bg-red-600 transition-colors" 
               >
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-3 w-3 lg:h-4 lg:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
           ) : (
-            <div className="border-2 border-dashed border-amber-200 rounded-2xl p-12 text-center bg-gradient-to-br from-amber-50 to-orange-50 cursor-pointer hover:border-amber-300 transition-colors">
+            <div className="border-2 border-dashed border-amber-200 rounded-xl lg:rounded-2xl p-6 lg:p-12 text-center bg-gradient-to-br from-amber-50 to-orange-50 cursor-pointer hover:border-amber-300 transition-colors"> 
               <label htmlFor="image-upload" className="cursor-pointer">
-                <div className="mx-auto h-16 w-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center mb-4">
-                  <PhotoIcon className="h-8 w-8 text-white" />
+                <div className="mx-auto h-12 w-12 lg:h-16 lg:w-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center mb-4"> 
+                  <PhotoIcon className="h-6 w-6 lg:h-8 lg:w-8 text-white" /> 
                 </div>
-                <p className="text-gray-700 font-medium">Click to upload image</p>
-                <p className="text-sm text-gray-500 mt-1">PNG, JPG, WEBP up to 5MB</p>
+                <p className="text-gray-700 font-medium text-sm lg:text-base"> 
+                  Click to upload image
+                </p>
+                <p className="text-xs lg:text-sm text-gray-500 mt-1"> 
+                  PNG, JPG, WEBP up to 5MB
+                </p>
               </label>
               <input
                 id="image-upload"
@@ -159,7 +165,7 @@ export default function AddPaintingForm() {
         </div>
 
         {/* Title & Medium */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-4 lg:gap-6"> 
           <div>
             <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
               <TagIcon className="h-4 w-4 text-amber-600" />
@@ -172,7 +178,7 @@ export default function AddPaintingForm() {
               onChange={(e) => setTitle(e.target.value)}
               required
               placeholder="e.g., Sunset Dreams"
-              className="w-full px-4 py-3 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200"
+              className="w-full px-3 lg:px-4 py-2 lg:py-3 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 text-sm lg:text-base" 
             />
           </div>
         </div>
@@ -187,14 +193,14 @@ export default function AddPaintingForm() {
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            rows="4"
+            rows="3" 
             placeholder="Tell the story behind this artwork..."
-            className="w-full px-4 py-3 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 resize-none"
+            className="w-full px-3 lg:px-4 py-2 lg:py-3 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 resize-none text-sm lg:text-base" 
           />
         </div>
 
         {/* Dimensions & Price */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6"> 
           <div>
             <label htmlFor="dimensions" className="block text-sm font-medium text-gray-700 mb-2 items-center gap-2">
               <ArrowsPointingOutIcon className="h-4 w-4 text-amber-600" />
@@ -206,7 +212,7 @@ export default function AddPaintingForm() {
               value={dimensions}
               onChange={(e) => setDimensions(e.target.value)}
               placeholder="e.g., 24 x 36 inches"
-              className="w-full px-4 py-3 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200"
+              className="w-full px-3 lg:px-4 py-2 lg:py-3 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 text-sm lg:text-base" 
             />
           </div>
           
@@ -216,7 +222,7 @@ export default function AddPaintingForm() {
               Price (₹)
             </label>
             <div className="relative">
-              <CurrencyRupeeIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-amber-500" />
+              <CurrencyRupeeIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 lg:h-5 lg:w-5 text-amber-500" /> 
               <input
                 type="number"
                 id="price"
@@ -226,7 +232,7 @@ export default function AddPaintingForm() {
                 min="0"
                 step="1"
                 placeholder="2500"
-                className="w-full pl-10 pr-4 py-3 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200"
+                className="w-full pl-9 lg:pl-10 pr-3 lg:pr-4 py-2 lg:py-3 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 text-sm lg:text-base"
               />
             </div>
           </div>
@@ -234,8 +240,8 @@ export default function AddPaintingForm() {
 
         {/* Status Messages */}
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm flex items-start gap-3">
-            <svg className="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="bg-red-50 border border-red-200 text-red-600 px-3 lg:px-4 py-2 lg:py-3 rounded-lg text-xs lg:text-sm flex items-start gap-3"> 
+            <svg className="h-4 w-4 lg:h-5 lg:w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <div>{error}</div>
@@ -243,8 +249,8 @@ export default function AddPaintingForm() {
         )}
 
         {success && (
-          <div className="bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded-lg text-sm flex items-start gap-3">
-            <svg className="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="bg-green-50 border border-green-200 text-green-600 px-3 lg:px-4 py-2 lg:py-3 rounded-lg text-xs lg:text-sm flex items-start gap-3"> 
+            <svg className="h-4 w-4 lg:h-5 lg:w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <div>{success}</div>
@@ -252,26 +258,26 @@ export default function AddPaintingForm() {
         )}
 
         {/* Submit Button */}
-        <div className="pt-6 border-t border-amber-50">
+        <div className="pt-4 lg:pt-6 border-t border-amber-50"> 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 px-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium rounded-lg hover:from-amber-600 hover:to-orange-600 focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+            className="w-full py-2.5 lg:py-3 px-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium rounded-lg hover:from-amber-600 hover:to-orange-600 focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 text-sm lg:text-base" 
           >
             {loading ? (
               <>
-                <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <div className="h-4 w-4 lg:h-5 lg:w-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div> 
                 Uploading Artwork...
               </>
             ) : (
               <>
-                <CloudArrowUpIcon className="h-5 w-5" />
+                <CloudArrowUpIcon className="h-4 w-4 lg:h-5 lg:w-5" /> 
                 Publish Artwork
               </>
             )}
           </button>
           
-          <p className="text-center text-sm text-gray-500 mt-4">
+          <p className="text-center text-xs lg:text-sm text-gray-500 mt-4"> 
             Your artwork will appear on the gallery after upload
           </p>
         </div>

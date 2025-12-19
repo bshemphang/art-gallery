@@ -155,40 +155,40 @@ export default function ManagePaintingsPage() {
 
   return (
     <>
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 lg:mb-8"> 
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Manage Artworks</h2>
-          <p className="text-gray-600 mt-2">Edit, delete, or mark artworks as sold</p>
+          <h2 className="text-xl lg:text-2xl font-bold text-gray-900">Manage Artworks</h2> 
+          <p className="text-gray-600 mt-1 lg:mt-2 text-sm lg:text-base">Edit, delete, or mark artworks as sold</p> 
         </div>
         <button
           onClick={fetchPaintings}
           disabled={loading}
-          className="flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 disabled:opacity-50"
+          className="flex items-center gap-2 px-3 lg:px-4 py-1.5 lg:py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 disabled:opacity-50 text-sm lg:text-base w-full sm:w-auto"
         >
-          <ArrowPathIcon className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
+          <ArrowPathIcon className={`h-3 w-3 lg:h-4 lg:w-4 ${loading ? 'animate-spin' : ''}`} /> 
           Refresh List
         </button>
       </div>
 
       {loading ? (
-        <div className="text-center py-12">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-amber-500"></div>
-          <p className="mt-2 text-gray-500">Loading artworks...</p>
+        <div className="text-center py-8 lg:py-12"> 
+          <div className="inline-block animate-spin rounded-full h-6 w-6 lg:h-8 lg:w-8 border-t-2 border-b-2 border-amber-500"></div> 
+          <p className="mt-2 text-gray-500 text-sm lg:text-base">Loading artworks...</p> 
         </div>
       ) : paintings.length === 0 ? (
-        <div className="text-center py-12 bg-gray-50 rounded-xl">
-          <div className="mx-auto h-16 w-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-            <EyeIcon className="h-8 w-8 text-gray-400" />
+        <div className="text-center py-8 lg:py-12 bg-gray-50 rounded-xl"> 
+          <div className="mx-auto h-12 w-12 lg:h-16 lg:w-16 bg-gray-100 rounded-full flex items-center justify-center mb-4"> 
+            <EyeIcon className="h-6 w-6 lg:h-8 lg:w-8 text-gray-400" /> 
           </div>
-          <h3 className="text-lg font-semibold text-gray-900">No artworks found</h3>
-          <p className="text-gray-600 mt-1">Add your first artwork to get started</p>
+          <h3 className="text-base lg:text-lg font-semibold text-gray-900">No artworks found</h3> 
+          <p className="text-gray-600 mt-1 text-sm lg:text-base">Add your first artwork to get started</p> 
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6"> 
           {paintings.map((painting) => (
             <div key={painting.id} className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
               {/* Image */}
-              <div className="h-48 relative bg-gradient-to-br from-amber-50 to-orange-50">
+              <div className="h-40 lg:h-48 relative bg-gradient-to-br from-amber-50 to-orange-50"> 
                 <img
                   src={painting.image_url}
                   alt={painting.title}
@@ -196,13 +196,13 @@ export default function ManagePaintingsPage() {
                 />
                 
                 {/* Status Badge */}
-                <div className="absolute top-3 right-3">
+                <div className="absolute top-2 right-2 lg:top-3 lg:right-3"> 
                   {painting.is_sold ? (
-                    <span className="px-3 py-1 bg-red-500 text-white text-xs font-semibold rounded-full">
+                    <span className="px-2 py-0.5 lg:px-3 lg:py-1 bg-red-500 text-white text-xs font-semibold rounded-full"> 
                       Sold
                     </span>
                   ) : (
-                    <span className="px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full">
+                    <span className="px-2 py-0.5 lg:px-3 lg:py-1 bg-green-500 text-white text-xs font-semibold rounded-full"> 
                       Available
                     </span>
                   )}
@@ -210,33 +210,33 @@ export default function ManagePaintingsPage() {
               </div>
               
               {/* Details */}
-              <div className="p-4">
-                <h3 className="font-bold text-gray-900 text-lg">{painting.title}</h3>
+              <div className="p-3 lg:p-4"> 
+                <h3 className="font-bold text-gray-900 text-base lg:text-lg line-clamp-1">{painting.title}</h3> 
                 
                 {painting.description && (
-                  <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+                  <p className="text-xs lg:text-sm text-gray-600 mt-1 lg:mt-2 line-clamp-2"> 
                     {painting.description}
                   </p>
                 )}
                 
-                <div className="flex items-center justify-between mt-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between mt-3 lg:mt-4 gap-2"> 
                   <div>
-                    <p className="text-xl font-bold text-amber-700">₹{painting.price}</p>
+                    <p className="text-lg lg:text-xl font-bold text-amber-700">₹{painting.price}</p> 
                     {painting.dimensions && (
-                      <p className="text-sm text-gray-500">{painting.dimensions}</p>
+                      <p className="text-xs lg:text-sm text-gray-500">{painting.dimensions}</p> 
                     )}
                     {painting.is_sold && painting.sold_at && (
-                      <p className="text-xs text-gray-400 mt-1">
+                      <p className="text-xs text-gray-400 mt-0.5 lg:mt-1"> 
                         Sold on {formatDate(painting.sold_at)}
                       </p>
                     )}
                   </div>
                   
                   {/* Action Buttons */}
-                  <div className="flex gap-2">
+                  <div className="flex gap-1 lg:gap-2 justify-end"> 
                     <button
                       onClick={() => confirmToggleSold(painting)}
-                      className={`p-2 rounded-lg ${
+                      className={`p-1.5 lg:p-2 rounded-lg ${ 
                         painting.is_sold
                           ? 'bg-green-100 text-green-700 hover:bg-green-200'
                           : 'bg-yellow-100 text-yellow-700 hover:bg-yellow-200'
@@ -244,24 +244,24 @@ export default function ManagePaintingsPage() {
                       title={painting.is_sold ? 'Mark as Available' : 'Mark as Sold'}
                     >
                       {painting.is_sold ? (
-                        <XCircleIcon className="h-5 w-5" />
+                        <XCircleIcon className="h-4 w-4 lg:h-5 lg:w-5" /> 
                       ) : (
-                        <CheckCircleIcon className="h-5 w-5" />
+                        <CheckCircleIcon className="h-4 w-4 lg:h-5 lg:w-5" /> 
                       )}
                     </button>
                     
                     <button
                       onClick={() => confirmDelete(painting)}
-                      className="p-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200"
+                      className="p-1.5 lg:p-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200" /* UPDATED */
                       title="Delete Artwork"
                     >
-                      <TrashIcon className="h-5 w-5" />
+                      <TrashIcon className="h-4 w-4 lg:h-5 lg:w-5" /> 
                     </button>
                   </div>
                 </div>
                 
                 {/* Quick Stats */}
-                <div className="mt-4 pt-3 border-t border-gray-100 flex justify-between text-xs text-gray-500">
+                <div className="mt-3 lg:mt-4 pt-2 lg:pt-3 border-t border-gray-100 flex justify-between text-xs text-gray-500"> 
                   <span>Added: {formatDate(painting.created_at)}</span>
                   <span>ID: #{painting.id.toString().slice(-4)}</span>
                 </div>
